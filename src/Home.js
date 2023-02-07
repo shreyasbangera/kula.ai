@@ -30,7 +30,6 @@ const Home = () => {
       <button>View Kula Outreach</button>
       </div>
 
-      {/* layout */}
       <Layout content={content}/>
     </div>
   );

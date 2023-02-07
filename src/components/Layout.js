@@ -1,39 +1,26 @@
 import React, { createRef, useRef } from "react";
 import Sticky from "react-stickynode";
-import { useInView } from "react-intersection-observer";
-
-import { useEffect } from "react";
 
 const Layout = ({ content }) => {
-  const myRef = useRef([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        console.log("entry", entry);
-      });
-    });
-
-    myRef.current = content?.map(
-      (content, index) => myRef.current[index] ?? createRef()
-    );
-
-    return () => observer.disconnect();
-  }, [myRef]);
+   const myRef = useRef()
+   myRef.current = content?.map(
+    (content, index) => myRef.current[index] ?? createRef()
+  );
+   console.log(myRef)
 
   return (
     <div className="layout">
       <div className="text-layout">
         {content?.map((content, index) => (
-          <div className="text-container" key={index}>
-            <span ref={myRef.current[index]}>{content.heading}</span>
+          <div ref={myRef.current[index]}className="text-container" key={index}>
+            <span >{content.heading}</span>
             <h1>{content.subHeading}</h1>
             <p style={{ color: "#4d4d4d" }}>{content.description}</p>
           </div>
         ))}
-        <div style={{minHeight:"1rem"}}></div>
       </div>
-      <Sticky top={150}>
+      
+      <Sticky top={150} bottomBoundary={2800}>
         <div className="video-layout">
           <div className="video-container">
             <video autoPlay loop muted>

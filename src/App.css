@@ -7,6 +7,7 @@
   font-family: sans-serif;
   box-sizing: border-box;
   line-height: 1.75;
+  scroll-behavior: smooth;
 }
 
 nav {
@@ -73,7 +74,6 @@ nav .navlinks button {
 
 .layout {
   display: flex;
-  height: 100vh;
   padding: 7rem;
   position: relative;
   z-index: -1;
@@ -85,7 +85,6 @@ nav .navlinks button {
   flex-direction: column;
   gap: 25rem;
   width: 500px;
-  height: 450px;
 }
 
 .text-container {
